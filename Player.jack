@@ -1,0 +1,58 @@
+class Player {
+    field int life;
+    field int contadorDireita;
+    field int contadorEsquerda;
+    field int contadorMeio;
+    field int ultimaDirecao;
+    field String name;
+
+//fucntion Pergunta(boolean direita, boolean esquerda, boolean meio){
+    // if(direita){
+    //     do Output.printString("DIREITA = seta direita ou r");
+    // }
+    // if(esquerda){
+    //     do Output.printString("ESQUERDA = seta esquerda ou w");
+    // }
+    // if(meio){
+    //     do Output.printString("MEIO = seta para cima ou e");
+    // }
+    //     do Output.printString("VOLTAR = seta para baixo ou d");
+    //     direcao =  Keyboard.readInt("Pra onde você deseja ir?: ");
+           if (direcao = 130 )
+
+    //     contador += 1;
+    //     ultimaDirecao = X;
+    //     return direcao
+// }
+
+
+    constructor Player new() {
+        let life = 3;
+        let contadorDireita = 0;
+        let contadorEsquerda = 0;
+        let contadorMeio = 0;
+        let ultimaDirecao = 0;
+        let name = Keyboard.readLine("Digite seu nome: ");
+        return this;
+    }
+
+    function Direita(){
+        let contadorDireita = contadorDireita + 1;
+        return contadorDireita;
+    }
+
+    function Meio(){
+        let contadorMeio = contadorMeio + 1;
+        return contadorMeio;
+    }
+
+    function Esquerda(){
+        let contadorEsquerda= contadorEsquerda + 1;
+        return contadorEsquerda;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

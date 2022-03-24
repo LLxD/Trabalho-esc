@@ -1,0 +1,18 @@
+function Main.main 1
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+call SumGame.new 0
+pop local 0
+push local 0
+call SumGame.play 1
+pop temp 0
+push local 0
+call SumGame.printScore 1
+pop temp 0
+push local 0
+call SumGame.dispose 1
+pop temp 0
+push constant 0
+return

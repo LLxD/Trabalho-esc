@@ -1,0 +1,13 @@
+class Main {
+    function void main() {
+        var SumGame game;
+
+        do Screen.setColor(true);
+        let game = SumGame.new();
+        do game.play();
+        do game.printScore();
+        do game.dispose();
+
+        return;
+    }
+}

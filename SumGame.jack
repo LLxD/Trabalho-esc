@@ -1,0 +1,76 @@
+class SumGame {
+    field Player newPlayer;
+    field boolean hasWon;
+
+    constructor SumGame new() {
+        let newPlayer = Player;
+        let hawWon = false;
+        return this;
+    }
+
+    //TODO
+    // PLAYER: NOME, TOMADA DE DECISÃO, ROLAGENS DE DADO
+    // JOGO: CAMINHOS, CONCLUSÕES
+
+    // Você está na entrada da ultima torre de Daernaud. 
+    // Ela foi construida no deserto de Duanr pelas tribos da colina há eras atrás.
+    // Agora, a torre está infestada por vermes gigantes.
+    // Em algum lugar dessa torre, está a passagem para a Grande Mina de Eretrusk. 
+    // Encontre-a, e garanta que o caminho é seguro para outros te seguirem.
+
+    //SALA -> VERME GIGANTE -> BATALHA (PRA CADA FRACASSO -= 1) OU FUGA (SE FRACASSAR -= 1)
+    //Se o jogador vence a batalha com o verme gigante, ele vence o jogo.
+    //SALA -> POÇÃO -> VIDA += 1
+    //SALA -> ARMADILHA -> VIDA -= 1
+    //SALA -> ENTRADA DA MINA -> Vence o jogo.
+
+    method void play() {
+        var LCGRandom dice;
+        let diceValue = dice.randRange(1,20);
+        do Output.printString("Boas vindas aventureiro(a)");
+        do Output.printString("Voce esta na entrada da ultima torre de Daernaud. ");
+        do Output.printString("Ela foi construida no deserto de Duanr pelas tribos da colina ha eras atras.");
+        do Output.printString("Em algum lugar dessa torre, esta a passagem para a Grande Mina de Eretrusk.");
+        do Output.printString("Encontre-a, e garanta que o caminho eh seguro para outros que te seguirem.");
+        do Output.printString("No inicio da torre, tres caminhos estao a sua frente");
+        do Output.printString("Para onde voce deseja ir?");
+        while (~(hawWon)) {
+            newPlayer.pergunta(true,true,true);
+            if(newPlayer.contadorDireita = 1){
+                do Output.printString("Voce caminha a direita");
+                do Output.printString("ARMADILHA");
+                newPlayer.life = newPlayer.life - 1;
+                newPlayer.pergunta(true,true,true);
+            }
+            if(newPlayer.contadorMeio = 1){
+                do Output.printString("Voce caminha ao centro");
+                do Output.printString("POTION");
+                newPlayer.life = newPlayer.life + 1;
+            }
+            if(newPlayer.contadorEsquerda = 1){
+                do Output.printString("Voce caminha a esquerda");
+                do Output.printString("nada :(");
+            }
+
+            hawWon = true;
+        }
+        return;
+    }
+
+
+    method void printScore() {
+        if(hawWon){
+            do Output.printString("VOCE VENCEU O JOGO");
+        }
+        else{
+            do Output.printString("VOCE PERDEU O JOGO");
+        }
+        do Output.println();
+        return;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}
