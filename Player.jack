@@ -6,24 +6,6 @@ class Player {
     field int ultimaDirecao;
     field String name;
 
-//fucntion Pergunta(boolean direita, boolean esquerda, boolean meio){
-    // if(direita){
-    //     do Output.printString("DIREITA = seta direita ou r");
-    // }
-    // if(esquerda){
-    //     do Output.printString("ESQUERDA = seta esquerda ou w");
-    // }
-    // if(meio){
-    //     do Output.printString("MEIO = seta para cima ou e");
-    // }
-    //     do Output.printString("VOLTAR = seta para baixo ou d");
-    //     direcao =  Keyboard.readInt("Pra onde você deseja ir?: ");
-           if (direcao = 130 )
-
-    //     contador += 1;
-    //     ultimaDirecao = X;
-    //     return direcao
-// }
 
 
     constructor Player new() {
@@ -36,19 +18,45 @@ class Player {
         return this;
     }
 
-    function Direita(){
-        let contadorDireita = contadorDireita + 1;
-        return contadorDireita;
-    }
-
-    function Meio(){
-        let contadorMeio = contadorMeio + 1;
-        return contadorMeio;
-    }
-
-    function Esquerda(){
-        let contadorEsquerda= contadorEsquerda + 1;
-        return contadorEsquerda;
+    method int pergunta(boolean direita, boolean esquerda, boolean meio){
+        if(direita){
+            do Output.printString("DIREITA = seta para direita");
+        }
+        if(esquerda){
+            do Output.printString("ESQUERDA = seta para esquerda");
+        }
+        if(meio){
+            do Output.printString("MEIO = seta para cima");
+        }
+        do Output.printString("VOLTAR = seta para baixo");
+        direcao =  Keyboard.readInt("Pra onde você deseja ir?: ");
+        if (direcao = 130 ){
+           let contadorEsquerda = contadorEsquerda + 1;
+           let ultimaDirecao = 1;
+           let penultimaDirecao = 1;
+        }
+        if (direcao = 131 ){
+           let contadorMeio = contadorMeio + 1;
+           let ultimaDirecao = 2;
+        }
+        if (direcao = 132 ){
+           let contadorDireita = contadorDireita + 1;
+           let ultimaDirecao = 3;
+        }
+        if (direcao = 133 ){
+           if(ultimaDirecao = 1){
+              let contadorEsquerda = contadorEsquerda - 1; 
+           }
+           if(ultimaDirecao = 2){
+              let contadorMeio = contadorMeio - 1; 
+           }
+           if(ultimaDirecao = 3){
+              let contadorDireita = contadorDireita - 1; 
+           }
+        
+        }
+        contador += 1;
+        return direcao
     }
 
     method void dispose() {
