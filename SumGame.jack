@@ -1,10 +1,12 @@
 class SumGame {
-    field Player newPlayer;
     field boolean hasWon;
+    field int diceValue;
+    field int newSeed;
 
     constructor SumGame new() {
-        let newPlayer = Player;
-        let hawWon = false;
+        let hasWon = false;
+        let diceValue = 0;
+        let newSeed = 0;
         return this;
     }
 
@@ -24,48 +26,61 @@ class SumGame {
     //SALA -> ARMADILHA -> VIDA -= 1
     //SALA -> ENTRADA DA MINA -> Vence o jogo.
 
-    method void play() {
-        var LCGRandom dice;
-        let diceValue = dice.randRange(1,20);
-        do Output.printString("Boas vindas aventureiro(a)");
-        do Output.printString("Voce esta na entrada da ultima torre de Daernaud. ");
-        do Output.printString("Ela foi construida no deserto de Duanr pelas tribos da colina ha eras atras.");
-        do Output.printString("Em algum lugar dessa torre, esta a passagem para a Grande Mina de Eretrusk.");
-        do Output.printString("Encontre-a, e garanta que o caminho eh seguro para outros que te seguirem.");
-        do Output.printString("No inicio da torre, tres caminhos estao a sua frente");
-        do Output.printString("Para onde voce deseja ir?");
-        while (~(hawWon)) {
-            newPlayer.pergunta(true,true,true);
-            if(newPlayer.contadorDireita = 1){
-                do Output.printString("Voce caminha a direita");
-                do Output.printString("ARMADILHA");
-                newPlayer.life = newPlayer.life - 1;
-                newPlayer.pergunta(true,true,true);
-            }
-            if(newPlayer.contadorMeio = 1){
-                do Output.printString("Voce caminha ao centro");
-                do Output.printString("POTION");
-                newPlayer.life = newPlayer.life + 1;
-            }
-            if(newPlayer.contadorEsquerda = 1){
-                do Output.printString("Voce caminha a esquerda");
-                do Output.printString("nada :(");
-            }
+    method void printPhrase(String phrase){
+        do Output.printString(phrase);
+        do Output.println();
+        return;
+    }
 
-            hawWon = true;
+    method void play() {
+        var Player newPlayer;
+        do LCGRandom.setSeed(newSeed);
+        let diceValue = LCGRandom.randRange(20);
+        do printPhrase("Boas vindas aventureiro(a)");
+        do printPhrase("Voce esta na entrada da ultima torre de Daernaud. ");
+        do printPhrase("Ela foi construida no deserto de Duanr pelas tribos da colina ha eras atras.");
+        do printPhrase("Em algum lugar dessa torre, esta a passagem para a Grande Mina de Eretrusk.");
+        do printPhrase("Encontre-a, e garanta que o caminho eh seguro para outros que te seguirem.");
+        do printPhrase("No inicio da torre, tres caminhos estao a sua frente");
+        do printPhrase("Para onde voce deseja ir?");
+        do Output.println();
+
+        do Output.printInt(diceValue);
+
+        while (~(hasWon)) {
+                let newSeed = newSeed +1;
+                let diceValue = LCGRandom.randRange(20);
+                do Output.printInt(diceValue);
+        //     newPlayer.pergunta(true,true,true);
+        //     if(newPlayer.contadorDireita = 1){
+        //         do Output.printString("Voce caminha a direita");
+        //         do Output.printString("ARMADILHA");
+        //         newPlayer.life = newPlayer.life - 1;
+        //         newPlayer.pergunta(true,true,true);
+        //     }
+        //     if(newPlayer.contadorMeio = 1){
+        //         do Output.printString("Voce caminha ao centro");
+        //         do Output.printString("POTION");
+        //         newPlayer.life = newPlayer.life + 1;
+        //     }
+        //     if(newPlayer.contadorEsquerda = 1){
+        //         do Output.printString("Voce caminha a esquerda");
+        //         do Output.printString("nada :(");
+        //     }
+
+            let hasWon = true;
         }
         return;
     }
 
 
     method void printScore() {
-        if(hawWon){
-            do Output.printString("VOCE VENCEU O JOGO");
+        if(hasWon){
+            do printPhrase("VOCE VENCEU O JOGO");
         }
         else{
-            do Output.printString("VOCE PERDEU O JOGO");
+            do printPhrase("VOCE PERDEU O JOGO");
         }
-        do Output.println();
         return;
     }
 
