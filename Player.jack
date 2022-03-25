@@ -4,70 +4,91 @@ class Player {
     field int contadorEsquerda;
     field int contadorMeio;
     field String name;
-
-
+    field int direcao;
 
     constructor Player new() {
         let life = 3;
         let contadorDireita = 0;
         let contadorEsquerda = 0;
         let contadorMeio = 0;
-        let name = Keyboard.readLine("Digite seu nome: ");
+        let direcao = 0;
+        let name = Keyboard.readLine("Qual o seu nome, aventureiro? ");
         return this;
     }
 
     method int pergunta(boolean direita, boolean esquerda, boolean meio){
-        if(direita){
-            do Output.printString("DIREITA = seta para direita");
-        }
         if(esquerda){
-            do Output.printString("ESQUERDA = seta para esquerda");
+            do Output.printString("ESQUERDA = 0");
+            do Output.println();
         }
         if(meio){
-            do Output.printString("MEIO = seta para cima");
+            do Output.printString("MEIO = 1");
+            do Output.println();
         }
-        do Output.printString("VOLTAR = seta para baixo");
-        direcao =  Keyboard.readInt("Pra onde você deseja ir?: ");
-        if (direcao = 130 ){
-           let contadorEsquerda = contadorEsquerda + 1; 
+        if(direita){
+            do Output.printString("DIREITA = 2");
+            do Output.println();
         }
-        if (direcao = 131 ){
-           let contadorMeio = contadorMeio + 1;
-        }
-        if (direcao = 132 ){
-           let contadorDireita = contadorDireita + 1;  
-        }
-        if (direcao = 133 ){
-           if(contadorEsquerda = 1 & contadorMeio = 0 & contadorDireita = 0 ){
-              let contadorEsquerda = contadorEsquerda - 1
-           }
-           if(contadorEsquerda = 2 & contadorMeio = 0 & contadorDireita = 0){
-              let contadorEsquerda = contadorEsquerda - 1;
-           }
-           if(contadorEsquerda = 1 & contadorMeio = 1 & contadorDireita = 0){
-              let contadorMeio= contadorMeio - 1;  
-           }
-           if(contadorEsquerda = 0 & contadorMeio = 1 & contadorDireita = 0){
-              let contadorMeio = contadorMeio - 1; 
-           }
-           if(contadorEsquerda = 0 & contadorMeio = 2 & contadorDireita = 0){
-              let contadorMeio = contadorMeio - 1; 
-           }
-           if(contadorEsquerda = 0 & contadorMeio = 0 & contadorDireita = 1){
-              let contadorDireita = contadorDireita - 1; 
-           }
-           if(contadorEsquerda = 0 & contadorMeio = 0 & contadorDireita = 2){
-              let contadorDireita = contadorDireita - 1; 
-           }
-           if(contadorEsquerda = 1 & contadorMeio = 0 & contadorDireita = 1){
-              let contadorEsquerda = contadorEsquerda - 1; 
-           }
+        // do Output.printString("VOLTAR = seta para baixo");
+        // do Output.println();
+        let direcao = Keyboard.readInt("Pra onde você deseja ir?: ");
+        do Output.printInt(direcao);
+        //acho que fica mais fácil mover essa lógica das direções pro Jogo
+        //implementei uma ideia usando um array [0,0,0]
+        // if (direcao = 130 ){
+        //    let contadorEsquerda = contadorEsquerda + 1; 
+        // }
+        // if (direcao = 131 ){
+        //    let contadorMeio = contadorMeio + 1;
+        // }
+        // if (direcao = 132 ){
+        //    let contadorDireita = contadorDireita + 1;  
+        // }
+        // if (direcao = 133 ){
+        //    if(contadorEsquerda = 1 & contadorMeio = 0 & contadorDireita = 0 ){
+        //       let contadorEsquerda = contadorEsquerda - 1;
+        //    }
+        //    if(contadorEsquerda = 2 & contadorMeio = 0 & contadorDireita = 0){
+        //       let contadorEsquerda = contadorEsquerda - 1;
+        //    }
+        //    if(contadorEsquerda = 1 & contadorMeio = 1 & contadorDireita = 0){
+        //       let contadorMeio= contadorMeio - 1;  
+        //    }
+        //    if(contadorEsquerda = 0 & contadorMeio = 1 & contadorDireita = 0){
+        //       let contadorMeio = contadorMeio - 1; 
+        //    }
+        //    if(contadorEsquerda = 0 & contadorMeio = 2 & contadorDireita = 0){
+        //       let contadorMeio = contadorMeio - 1; 
+        //    }
+        //    if(contadorEsquerda = 0 & contadorMeio = 0 & contadorDireita = 1){
+        //       let contadorDireita = contadorDireita - 1; 
+        //    }
+        //    if(contadorEsquerda = 0 & contadorMeio = 0 & contadorDireita = 2){
+        //       let contadorDireita = contadorDireita - 1; 
+        //    }
+        //    if(contadorEsquerda = 1 & contadorMeio = 0 & contadorDireita = 1){
+        //       let contadorEsquerda = contadorEsquerda - 1; 
+        //    }
 
+        // }
+        // else{
+        //     let direcao =  Keyboard.readChar("Essa operação foi inválida, onde você deseja ir? Use somente a seta: ");
+        // }
+        return direcao;
+    }
+
+    method int mudarVida(boolean ganhar) {
+        if(ganhar){
+            let life = life + 1;
         }
         else{
-            direcao =  Keyboard.readInt("Essa operação foi inválida, onde você deseja ir? Use somente a seta: ");
+            let life = life - 1;
         }
-        return direcao
+        do Output.println();
+        do Output.printString("VIDA ATUAL: ");
+        do Output.printInt(life);
+        do Output.println();
+        return life;
     }
 
     method void dispose() {

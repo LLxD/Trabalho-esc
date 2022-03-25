@@ -2,17 +2,21 @@ class SumGame {
     field boolean hasWon;
     field int diceValue;
     field int newSeed;
+    field int direcao;
 
     constructor SumGame new() {
         let hasWon = false;
         let diceValue = 0;
         let newSeed = 0;
+        let direcao = 0;
         return this;
     }
 
     //TODO
-    // PLAYER: NOME, TOMADA DE DECISÃO, ROLAGENS DE DADO
-    // JOGO: CAMINHOS, CONCLUSÕES
+    // PLAYER: NOME, TOMADA DE DECISÃO
+    // JOGO: CONCLUSÕES
+    //FINALIZAR TODOS OS CAMINHOS
+    //IMPLEMENTAR COMBATE
 
     // Você está na entrada da ultima torre de Daernaud. 
     // Ela foi construida no deserto de Duanr pelas tribos da colina há eras atrás.
@@ -26,47 +30,82 @@ class SumGame {
     //SALA -> ARMADILHA -> VIDA -= 1
     //SALA -> ENTRADA DA MINA -> Vence o jogo.
 
+        method void printSpacer(){
+        do Output.println();
+        do Output.printString("-----------------------------------");
+        do Output.println();
+        return;
+    }
+
+
     method void printPhrase(String phrase){
         do Output.printString(phrase);
         do Output.println();
         return;
     }
 
+
+
     method void play() {
         var Player newPlayer;
+        var Array directionsArray;
+
+        let directionsArray = Array.new(3);
+        let directionsArray[0] = 0;
+        let directionsArray[1] = 0;
+        let directionsArray[2] = 0;
+        let newPlayer = Player.new();
         do LCGRandom.setSeed(newSeed);
         let diceValue = LCGRandom.randRange(20);
-        do printPhrase("Boas vindas aventureiro(a)");
+        do printSpacer();
+        do Output.printString("Boas vindas, aventureiro(a)");
         do printPhrase("Voce esta na entrada da ultima torre de Daernaud. ");
         do printPhrase("Ela foi construida no deserto de Duanr pelas tribos da colina ha eras atras.");
         do printPhrase("Em algum lugar dessa torre, esta a passagem para a Grande Mina de Eretrusk.");
         do printPhrase("Encontre-a, e garanta que o caminho eh seguro para outros que te seguirem.");
         do printPhrase("No inicio da torre, tres caminhos estao a sua frente");
         do printPhrase("Para onde voce deseja ir?");
-        do Output.println();
-
+        do printSpacer();
         do Output.printInt(diceValue);
-
+        do printSpacer();
         while (~(hasWon)) {
                 let newSeed = newSeed +1;
                 let diceValue = LCGRandom.randRange(20);
                 do Output.printInt(diceValue);
-        //     newPlayer.pergunta(true,true,true);
-        //     if(newPlayer.contadorDireita = 1){
-        //         do Output.printString("Voce caminha a direita");
-        //         do Output.printString("ARMADILHA");
-        //         newPlayer.life = newPlayer.life - 1;
-        //         newPlayer.pergunta(true,true,true);
-        //     }
-        //     if(newPlayer.contadorMeio = 1){
-        //         do Output.printString("Voce caminha ao centro");
-        //         do Output.printString("POTION");
-        //         newPlayer.life = newPlayer.life + 1;
-        //     }
-        //     if(newPlayer.contadorEsquerda = 1){
-        //         do Output.printString("Voce caminha a esquerda");
-        //         do Output.printString("nada :(");
-        //     }
+                do printSpacer();
+                let direcao = newPlayer.pergunta(true,true,true);
+                let directionsArray[direcao] = directionsArray[direcao]+1;
+                if(directionsArray[0] = 1){
+                    do Screen.clearScreen();
+                    do Output.printString("Voce caminha a esquerda");
+                    do Output.printString("ARMADILHA");
+                    do newPlayer.mudarVida(false);
+                    let direcao = newPlayer.pergunta(true,false,true);
+                    let directionsArray[direcao] = directionsArray[direcao]+1;
+                    if(directionsArray[2] = 1){
+                        do Screen.clearScreen();
+                        do Output.printString("Voce encontra a entrada da mina!");
+                        let hasWon = true;
+                        return;
+                    }
+                    else{
+                        do Screen.clearScreen();
+                        do Output.printString("Voce encontra um verme gigante!");
+                    }
+                }
+                if(directionsArray[1] = 1){
+                    do Screen.clearScreen();
+                    do Output.printString("Voce caminha ao centro");
+                    do Output.printString("POTION");
+                    do newPlayer.mudarVida(true);
+                    let direcao = newPlayer.pergunta(true,true,true);
+                }
+                if(directionsArray[2] = 1){
+                    do Screen.clearScreen();
+                    do Output.printString("Voce caminha a direita");
+                    do Output.printString("NADA");
+                    let direcao = newPlayer.pergunta(true,true,true);
+                }
 
             let hasWon = true;
         }
@@ -75,12 +114,14 @@ class SumGame {
 
 
     method void printScore() {
+            do printSpacer();
         if(hasWon){
             do printPhrase("VOCE VENCEU O JOGO");
         }
         else{
             do printPhrase("VOCE PERDEU O JOGO");
         }
+            do printSpacer();
         return;
     }
 
