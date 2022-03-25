@@ -176,7 +176,7 @@ pop temp 0
 call Output.println 0
 pop temp 0
 label IF_FALSE2
-push constant 26
+push constant 27
 call String.new 1
 push constant 80
 call String.appendChar 2
@@ -202,7 +202,9 @@ push constant 111
 call String.appendChar 2
 push constant 99
 call String.appendChar 2
-push constant 234
+push constant 195
+call String.appendChar 2
+push constant 170
 call String.appendChar 2
 push constant 32
 call String.appendChar 2

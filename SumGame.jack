@@ -3,12 +3,14 @@ class SumGame {
     field int diceValue;
     field int newSeed;
     field int direcao;
+    field int bilhete;
 
     constructor SumGame new() {
         let hasWon = false;
         let diceValue = 0;
         let newSeed = 0;
         let direcao = 0;
+        let bilhete = 0;
         return this;
     }
 
@@ -57,7 +59,7 @@ class SumGame {
         let directionsArray[2] = 0;
         let newPlayer = Player.new();
         do LCGRandom.setSeed(newSeed);
-        let diceValue = LCGRandom.randRange(20);
+        let diceValue = LCGRandom.randRange(1);
         do printSpacer();
         do Output.printString("Boas vindas, aventureiro(a)");
         do printPhrase("Voce esta na entrada da ultima torre de Daernaud. ");
@@ -71,7 +73,7 @@ class SumGame {
         do printSpacer();
         while (~(hasWon)) {
                 let newSeed = newSeed +1;
-                let diceValue = LCGRandom.randRange(20);
+                let diceValue = LCGRandom.randRange(1);
                 do Output.printInt(diceValue);
                 do printSpacer();
                 let direcao = newPlayer.pergunta(true,true,true);
@@ -89,9 +91,24 @@ class SumGame {
                         let hasWon = true;
                         return;
                     }
-                    else{
+                    if(directionsArray[1] = 1){
                         do Screen.clearScreen();
                         do Output.printString("Voce encontra um verme gigante!");
+                        do Output.println();
+                        do Output.printString("Preparar para o combate!");
+                        do Output.println();
+                        let bilhete = Keyboard.readLine("Escolha um numero de 1 a 2: ");
+                        let newSeed = newSeed +1;
+                        do LCGRandom.setSeed(newSeed);
+                        let diceValue = LCGRandom.randRange(1);
+                        if(~(diceValue = bilhete)){
+                            let hasWon = true;
+                            return;
+                        }
+                        else{
+                            let hasWon = false;
+                            return;
+                        }
                     }
                 }
                 if(directionsArray[1] = 1){
@@ -99,13 +116,59 @@ class SumGame {
                     do Output.printString("Voce caminha ao centro");
                     do Output.printString("POTION");
                     do newPlayer.mudarVida(true);
-                    let direcao = newPlayer.pergunta(true,true,true);
+                    let direcao = newPlayer.pergunta(false,true,false);
+                    let directionsArray[direcao] = directionsArray[direcao]+1;
+                    if(directionsArray[1] = 1){
+                        do Screen.clearScreen();
+                        do Output.printString("Voce encontra um verme gigante!");
+                        do Output.println();
+                        do Output.printString("Preparar para o combate!");
+                        do Output.println();
+                        let bilhete = Keyboard.readLine("Escolha um numero de 1 a 2: ");
+                        let newSeed = newSeed +1;
+                        do LCGRandom.setSeed(newSeed);
+                        let diceValue = LCGRandom.randRange(1);
+                        if(~(diceValue = bilhete)){
+                            let hasWon = false;
+                            return;
+                        }
+                        else{
+                            let hasWon = true;
+                            return;
+                        }
+                    }    
                 }
                 if(directionsArray[2] = 1){
                     do Screen.clearScreen();
                     do Output.printString("Voce caminha a direita");
                     do Output.printString("NADA");
-                    let direcao = newPlayer.pergunta(true,true,true);
+                    let direcao = newPlayer.pergunta(false,true,true);
+                    let directionsArray[direcao] = directionsArray[direcao]+1;
+                    if(directionsArray[1] = 1){
+                        do Screen.clearScreen();
+                        do Output.printString("Voce encontra a entrada da mina!");
+                        let hasWon = true;
+                        return;
+                    }
+                    if(directionsArray[2] = 1){
+                        do Screen.clearScreen();
+                        do Output.printString("Voce encontra um verme gigante!");
+                        do Output.println();
+                        do Output.printString("Preparar para o combate!");
+                        do Output.println();
+                        let bilhete = Keyboard.readLine("Escolha um numero de 1 a 2: ");
+                        let newSeed = newSeed +1;
+                        do LCGRandom.setSeed(newSeed);
+                        let diceValue = LCGRandom.randRange(1);
+                        if(diceValue = bilhete){
+                            let hasWon = true;
+                            return;
+                        }
+                        else{
+                            let hasWon = false;
+                            return;
+                        }
+                    }
                 }
 
             let hasWon = true;
