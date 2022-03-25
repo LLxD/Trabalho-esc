@@ -11,6 +11,7 @@ class SumGame {
         let newSeed = 0;
         let direcao = 0;
         let bilhete = 0;
+        
         return this;
     }
 
@@ -53,13 +54,14 @@ class SumGame {
         var Player newPlayer;
         var Array directionsArray;
 
+        
         let directionsArray = Array.new(3);
         let directionsArray[0] = 0;
         let directionsArray[1] = 0;
         let directionsArray[2] = 0;
         let newPlayer = Player.new();
-        do LCGRandom.setSeed(newSeed);
-        let diceValue = LCGRandom.randRange(1);
+        //do LCGRandom.setSeed(newSeed);
+        //let diceValue = LCGRandom.randRange(4);
         do printSpacer();
         do Output.printString("Boas vindas, aventureiro(a)");
         do printPhrase("Voce esta na entrada da ultima torre de Daernaud. ");
@@ -69,12 +71,12 @@ class SumGame {
         do printPhrase("No inicio da torre, tres caminhos estao a sua frente");
         do printPhrase("Para onde voce deseja ir?");
         do printSpacer();
-        do Output.printInt(diceValue);
+        //do Output.printInt(diceValue);
         do printSpacer();
         while (~(hasWon)) {
                 let newSeed = newSeed +1;
-                let diceValue = LCGRandom.randRange(1);
-                do Output.printInt(diceValue);
+                let diceValue = LCGRandom.randRange(4);
+                //do Output.printInt(diceValue);
                 do printSpacer();
                 let direcao = newPlayer.pergunta(true,true,true);
                 let directionsArray[direcao] = directionsArray[direcao]+1;
@@ -97,11 +99,16 @@ class SumGame {
                         do Output.println();
                         do Output.printString("Preparar para o combate!");
                         do Output.println();
-                        let bilhete = Keyboard.readLine("Escolha um numero de 1 a 2: ");
+                        let bilhete = Keyboard.readInt("Escolha um numero de 1 a 4: ");
+                        //do Output.printInt(bilhete);
                         let newSeed = newSeed +1;
                         do LCGRandom.setSeed(newSeed);
-                        let diceValue = LCGRandom.randRange(1);
-                        if(~(diceValue = bilhete)){
+                        let diceValue = LCGRandom.randRange(4);
+                        do Output.println();
+                        //do Output.printInt(diceValue);
+                        
+                        //do Output.printInt(bilhete);
+                        if(diceValue = bilhete){
                             let hasWon = true;
                             return;
                         }
@@ -124,16 +131,17 @@ class SumGame {
                         do Output.println();
                         do Output.printString("Preparar para o combate!");
                         do Output.println();
-                        let bilhete = Keyboard.readLine("Escolha um numero de 1 a 2: ");
+                        let bilhete = Keyboard.readInt("Escolha um numero de 1 a 4: ");
+                        //do Output.printInt(bilhete);
                         let newSeed = newSeed +1;
                         do LCGRandom.setSeed(newSeed);
-                        let diceValue = LCGRandom.randRange(1);
-                        if(~(diceValue = bilhete)){
-                            let hasWon = false;
+                        let diceValue = LCGRandom.randRange(4);
+                        if(diceValue = bilhete){
+                            let hasWon = true;
                             return;
                         }
                         else{
-                            let hasWon = true;
+                            let hasWon = false;
                             return;
                         }
                     }    
@@ -156,10 +164,10 @@ class SumGame {
                         do Output.println();
                         do Output.printString("Preparar para o combate!");
                         do Output.println();
-                        let bilhete = Keyboard.readLine("Escolha um numero de 1 a 2: ");
+                        let bilhete = Keyboard.readInt("Escolha um numero de 1 a 4: ");
                         let newSeed = newSeed +1;
                         do LCGRandom.setSeed(newSeed);
-                        let diceValue = LCGRandom.randRange(1);
+                        let diceValue = LCGRandom.randRange(4);
                         if(diceValue = bilhete){
                             let hasWon = true;
                             return;
