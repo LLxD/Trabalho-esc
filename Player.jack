@@ -3,7 +3,6 @@ class Player {
     field int contadorDireita;
     field int contadorEsquerda;
     field int contadorMeio;
-    field int ultimaDirecao;
     field String name;
 
 
@@ -13,7 +12,6 @@ class Player {
         let contadorDireita = 0;
         let contadorEsquerda = 0;
         let contadorMeio = 0;
-        let ultimaDirecao = 0;
         let name = Keyboard.readLine("Digite seu nome: ");
         return this;
     }
@@ -31,31 +29,44 @@ class Player {
         do Output.printString("VOLTAR = seta para baixo");
         direcao =  Keyboard.readInt("Pra onde você deseja ir?: ");
         if (direcao = 130 ){
-           let contadorEsquerda = contadorEsquerda + 1;
-           let ultimaDirecao = 1;
-           let penultimaDirecao = 1;
+           let contadorEsquerda = contadorEsquerda + 1; 
         }
         if (direcao = 131 ){
            let contadorMeio = contadorMeio + 1;
-           let ultimaDirecao = 2;
         }
         if (direcao = 132 ){
-           let contadorDireita = contadorDireita + 1;
-           let ultimaDirecao = 3;
+           let contadorDireita = contadorDireita + 1;  
         }
         if (direcao = 133 ){
-           if(ultimaDirecao = 1){
-              let contadorEsquerda = contadorEsquerda - 1; 
+           if(contadorEsquerda = 1 & contadorMeio = 0 & contadorDireita = 0 ){
+              let contadorEsquerda = contadorEsquerda - 1
            }
-           if(ultimaDirecao = 2){
+           if(contadorEsquerda = 2 & contadorMeio = 0 & contadorDireita = 0){
+              let contadorEsquerda = contadorEsquerda - 1;
+           }
+           if(contadorEsquerda = 1 & contadorMeio = 1 & contadorDireita = 0){
+              let contadorMeio= contadorMeio - 1;  
+           }
+           if(contadorEsquerda = 0 & contadorMeio = 1 & contadorDireita = 0){
               let contadorMeio = contadorMeio - 1; 
            }
-           if(ultimaDirecao = 3){
+           if(contadorEsquerda = 0 & contadorMeio = 2 & contadorDireita = 0){
+              let contadorMeio = contadorMeio - 1; 
+           }
+           if(contadorEsquerda = 0 & contadorMeio = 0 & contadorDireita = 1){
               let contadorDireita = contadorDireita - 1; 
            }
-        
+           if(contadorEsquerda = 0 & contadorMeio = 0 & contadorDireita = 2){
+              let contadorDireita = contadorDireita - 1; 
+           }
+           if(contadorEsquerda = 1 & contadorMeio = 0 & contadorDireita = 1){
+              let contadorEsquerda = contadorEsquerda - 1; 
+           }
+
         }
-        contador += 1;
+        else{
+            direcao =  Keyboard.readInt("Essa operação foi inválida, onde você deseja ir? Use somente a seta: ");
+        }
         return direcao
     }
 
