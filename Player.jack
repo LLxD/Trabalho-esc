@@ -29,51 +29,17 @@ class Player {
             do Output.printString("DIREITA = 2");
             do Output.println();
         }
-        // do Output.printString("VOLTAR = seta para baixo");
-        // do Output.println();
-        let direcao = Keyboard.readInt("Pra onde você deseja ir?: ");
+        let direcao = Keyboard.readInt("Pra onde voce deseja ir?: ");
+        if (direcao > 2){
+            while (direcao > 2){
+                do Screen.clearScreen();
+                do Output.printString("DIRECAO INVALIDA");
+                do Output.println();
+                let direcao = Keyboard.readInt("Pra onde voce deseja ir?: ");
+             }
+        }
         do Output.printInt(direcao);
-        //acho que fica mais fácil mover essa lógica das direções pro Jogo
-        //implementei uma ideia usando um array [0,0,0]
-        // if (direcao = 130 ){
-        //    let contadorEsquerda = contadorEsquerda + 1; 
-        // }
-        // if (direcao = 131 ){
-        //    let contadorMeio = contadorMeio + 1;
-        // }
-        // if (direcao = 132 ){
-        //    let contadorDireita = contadorDireita + 1;  
-        // }
-        // if (direcao = 133 ){
-        //    if(contadorEsquerda = 1 & contadorMeio = 0 & contadorDireita = 0 ){
-        //       let contadorEsquerda = contadorEsquerda - 1;
-        //    }
-        //    if(contadorEsquerda = 2 & contadorMeio = 0 & contadorDireita = 0){
-        //       let contadorEsquerda = contadorEsquerda - 1;
-        //    }
-        //    if(contadorEsquerda = 1 & contadorMeio = 1 & contadorDireita = 0){
-        //       let contadorMeio= contadorMeio - 1;  
-        //    }
-        //    if(contadorEsquerda = 0 & contadorMeio = 1 & contadorDireita = 0){
-        //       let contadorMeio = contadorMeio - 1; 
-        //    }
-        //    if(contadorEsquerda = 0 & contadorMeio = 2 & contadorDireita = 0){
-        //       let contadorMeio = contadorMeio - 1; 
-        //    }
-        //    if(contadorEsquerda = 0 & contadorMeio = 0 & contadorDireita = 1){
-        //       let contadorDireita = contadorDireita - 1; 
-        //    }
-        //    if(contadorEsquerda = 0 & contadorMeio = 0 & contadorDireita = 2){
-        //       let contadorDireita = contadorDireita - 1; 
-        //    }
-        //    if(contadorEsquerda = 1 & contadorMeio = 0 & contadorDireita = 1){
-        //       let contadorEsquerda = contadorEsquerda - 1; 
-        //    }
-
-        // }
-        // else{
-        //     let direcao =  Keyboard.readChar("Essa operação foi inválida, onde você deseja ir? Use somente a seta: ");
-        // }
+        do Output.println();
         return direcao;
     }
 
@@ -89,6 +55,13 @@ class Player {
         do Output.printInt(life);
         do Output.println();
         return life;
+    }
+
+    method int getVida() {
+        return life;
+    }
+    method String getName() {
+        return name;
     }
 
     method void dispose() {
