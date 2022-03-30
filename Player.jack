@@ -5,6 +5,8 @@ class Player {
     field int contadorMeio;
     field String name;
     field int direcao;
+    field int dificuldade;
+    field int valor_para_dificuldade;
 
     constructor Player new() {
         let life = 3;
@@ -13,6 +15,8 @@ class Player {
         let contadorMeio = 0;
         let direcao = 0;
         let name = Keyboard.readLine("Qual o seu nome, aventureiro? ");
+        let dificuldade = 0;
+        let valor_para_dificuldade = 0;
         return this;
     }
 
@@ -62,6 +66,47 @@ class Player {
     }
     method String getName() {
         return name;
+    }
+
+    method int dificuldade(){
+
+        do Output.printString("Niveis do jogo:");
+        do Output.println();
+        do Output.printString("FACIL = 0");
+        do Output.println();
+        do Output.printString("MEDIO = 1");
+        do Output.println();
+        do Output.printString("DIFICIL = 2");
+        do Output.println();
+        do Output.println();
+        
+        let dificuldade = Keyboard.readInt("Qual nivel voce deseja? ");
+        if (dificuldade > 2){
+            while (dificuldade > 2){
+                do Screen.clearScreen();
+                do Output.printString("NIVEL INVALIDO");
+                do Output.println();
+                let dificuldade = Keyboard.readInt("Qual nivel voce deseja?: ");
+             }
+        }
+        do Output.printInt(dificuldade);
+        do Output.println();
+
+        return dificuldade;
+    }
+
+    method int parametroDificuldade(int dificuldade){
+        if(dificuldade = 0){
+            let valor_para_dificuldade = 5;
+        }
+        if(dificuldade = 1){
+            let valor_para_dificuldade = 9;
+        }
+        if(dificuldade = 2){
+            let valor_para_dificuldade = 14;
+        }
+
+        return valor_para_dificuldade;
     }
 
     method void dispose() {
