@@ -1,5 +1,5 @@
 function SumGame.new 0
-push constant 10
+push constant 9
 call Memory.alloc 1
 pop pointer 0
 push constant 0
@@ -14,107 +14,11 @@ push constant 0
 pop this 4
 push constant 2
 pop this 5
-push constant 0
-pop this 6
 push pointer 0
-return
-function SumGame.printSpacer 0
-push argument 0
-pop pointer 0
-call Output.println 0
-pop temp 0
-push constant 35
-call String.new 1
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-push constant 45
-call String.appendChar 2
-call Output.printString 1
-pop temp 0
-call Output.println 0
-pop temp 0
-push constant 0
-return
-function SumGame.printPhrase 0
-push argument 0
-pop pointer 0
-push argument 1
-call Output.printString 1
-pop temp 0
-call Output.println 0
-pop temp 0
-push constant 0
 return
 function SumGame.combat 0
 push argument 0
 pop pointer 0
-push pointer 0
 push constant 31
 call String.new 1
 push constant 86
@@ -179,9 +83,8 @@ push constant 101
 call String.appendChar 2
 push constant 33
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
-push pointer 0
 push constant 24
 call String.new 1
 push constant 80
@@ -232,7 +135,7 @@ push constant 101
 call String.appendChar 2
 push constant 33
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
 label WHILE_EXP0
 push this 5
@@ -242,8 +145,8 @@ not
 if-goto WHILE_END0
 push argument 1
 call Player.getVida 1
-pop this 7
-push this 7
+pop this 6
+push this 6
 push constant 0
 eq
 if-goto IF_TRUE0
@@ -252,8 +155,7 @@ label IF_TRUE0
 push constant 0
 return
 label IF_FALSE0
-push pointer 0
-call SumGame.printSpacer 1
+call Utils.printSpacer 0
 pop temp 0
 push constant 28
 call String.new 1
@@ -330,16 +232,15 @@ push constant 1
 add
 pop this 1
 push argument 1
-push this 8
+push this 7
 call Player.parametroDificuldade 2
-pop this 9
+pop this 8
 push this 1
-push this 9
+push this 8
 gt
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-push pointer 0
 push constant 45
 call String.new 1
 push constant 86
@@ -432,9 +333,8 @@ push constant 97
 call String.appendChar 2
 push constant 33
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
-push pointer 0
 push constant 23
 call String.new 1
 push constant 79
@@ -483,9 +383,7 @@ push constant 110
 call String.appendChar 2
 push constant 111
 call String.appendChar 2
-call SumGame.printPhrase 2
-pop temp 0
-call Screen.clearScreen 0
+call Utils.printPhrase 1
 pop temp 0
 push this 5
 push constant 1
@@ -493,7 +391,6 @@ sub
 pop this 5
 goto IF_END1
 label IF_FALSE1
-push pointer 0
 push constant 44
 call String.new 1
 push constant 79
@@ -584,9 +481,8 @@ push constant 115
 call String.appendChar 2
 push constant 33
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
-push pointer 0
 push constant 20
 call String.new 1
 push constant 86
@@ -629,9 +525,7 @@ push constant 110
 call String.appendChar 2
 push constant 111
 call String.appendChar 2
-call SumGame.printPhrase 2
-pop temp 0
-call Screen.clearScreen 0
+call Utils.printPhrase 1
 pop temp 0
 push argument 1
 push constant 0
@@ -640,7 +534,6 @@ pop temp 0
 label IF_END1
 goto WHILE_EXP0
 label WHILE_END0
-push pointer 0
 push constant 89
 call String.new 1
 push constant 86
@@ -821,7 +714,7 @@ push constant 97
 call String.appendChar 2
 push constant 115
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
 push constant 0
 not
@@ -858,11 +751,9 @@ push temp 0
 pop that 0
 call Player.new 0
 pop local 0
-push pointer 0
-call SumGame.printSpacer 1
+call Utils.printSpacer 0
 pop temp 0
-push pointer 0
-push constant 11
+push constant 13
 call String.new 1
 push constant 66
 call String.appendChar 2
@@ -886,19 +777,21 @@ push constant 97
 call String.appendChar 2
 push constant 115
 call String.appendChar 2
-call SumGame.printPhrase 2
+push constant 44
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
 pop temp 0
-push pointer 0
 push local 0
 call Player.getName 1
-call SumGame.printPhrase 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
 pop temp 0
 push local 0
 call Player.dificuldade 1
-pop this 8
-call Screen.clearScreen 0
-pop temp 0
-push pointer 0
+pop this 7
 push constant 50
 call String.new 1
 push constant 86
@@ -1001,9 +894,8 @@ push constant 46
 call String.appendChar 2
 push constant 32
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
-push pointer 0
 push constant 76
 call String.new 1
 push constant 69
@@ -1158,9 +1050,8 @@ push constant 115
 call String.appendChar 2
 push constant 46
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
-push pointer 0
 push constant 75
 call String.new 1
 push constant 69
@@ -1313,9 +1204,8 @@ push constant 107
 call String.appendChar 2
 push constant 46
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
-push pointer 0
 push constant 74
 call String.new 1
 push constant 69
@@ -1466,9 +1356,8 @@ push constant 109
 call String.appendChar 2
 push constant 46
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
-push pointer 0
 push constant 52
 call String.new 1
 push constant 78
@@ -1575,10 +1464,7 @@ push constant 116
 call String.appendChar 2
 push constant 101
 call String.appendChar 2
-call SumGame.printPhrase 2
-pop temp 0
-push pointer 0
-call SumGame.printSpacer 1
+call Utils.printPhrase 1
 pop temp 0
 label WHILE_EXP0
 push this 0
@@ -1598,8 +1484,6 @@ push constant 0
 not
 call Player.pergunta 4
 pop this 3
-call Screen.clearScreen 0
-pop temp 0
 push this 3
 push local 1
 add
@@ -1624,9 +1508,6 @@ eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-call Screen.clearScreen 0
-pop temp 0
-push pointer 0
 push constant 48
 call String.new 1
 push constant 86
@@ -1725,9 +1606,8 @@ push constant 100
 call String.appendChar 2
 push constant 97
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
-push pointer 0
 push constant 67
 call String.new 1
 push constant 83
@@ -1864,13 +1744,12 @@ push constant 97
 call String.appendChar 2
 push constant 111
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
 push local 0
 push constant 0
 call Player.mudarVida 2
 pop temp 0
-push pointer 0
 push constant 65
 call String.new 1
 push constant 65
@@ -2003,9 +1882,7 @@ push constant 116
 call String.appendChar 2
 push constant 101
 call String.appendChar 2
-call SumGame.printPhrase 2
-pop temp 0
-call Screen.clearScreen 0
+call Utils.printPhrase 1
 pop temp 0
 push local 0
 push constant 0
@@ -2039,9 +1916,6 @@ eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-call Screen.clearScreen 0
-pop temp 0
-push pointer 0
 push constant 32
 call String.new 1
 push constant 86
@@ -2108,7 +1982,7 @@ push constant 97
 call String.appendChar 2
 push constant 33
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
 push constant 0
 not
@@ -2126,8 +2000,6 @@ eq
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
-call Screen.clearScreen 0
-pop temp 0
 push pointer 0
 push local 0
 call SumGame.combat 2
@@ -2146,9 +2018,6 @@ eq
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
-call Screen.clearScreen 0
-pop temp 0
-push pointer 0
 push constant 44
 call String.new 1
 push constant 86
@@ -2239,9 +2108,8 @@ push constant 114
 call String.appendChar 2
 push constant 111
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
-push pointer 0
 push constant 80
 call String.new 1
 push constant 65
@@ -2404,9 +2272,8 @@ push constant 115
 call String.appendChar 2
 push constant 111
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
-push pointer 0
 push constant 65
 call String.new 1
 push constant 65
@@ -2539,14 +2406,13 @@ push constant 116
 call String.appendChar 2
 push constant 101
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
 push local 0
 push constant 0
 not
 call Player.mudarVida 2
 pop temp 0
-push pointer 0
 push constant 69
 call String.new 1
 push constant 82
@@ -2687,9 +2553,8 @@ push constant 114
 call String.appendChar 2
 push constant 111
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
-push pointer 0
 push constant 45
 call String.new 1
 push constant 66
@@ -2782,9 +2647,7 @@ push constant 111
 call String.appendChar 2
 push constant 114
 call String.appendChar 2
-call SumGame.printPhrase 2
-pop temp 0
-call Screen.clearScreen 0
+call Utils.printPhrase 1
 pop temp 0
 push local 0
 push constant 0
@@ -2793,8 +2656,6 @@ push constant 0
 not
 call Player.pergunta 4
 pop this 3
-call Screen.clearScreen 0
-pop temp 0
 push pointer 0
 push local 0
 call SumGame.combat 2
@@ -2812,9 +2673,6 @@ eq
 if-goto IF_TRUE4
 goto IF_FALSE4
 label IF_TRUE4
-call Screen.clearScreen 0
-pop temp 0
-push pointer 0
 push constant 38
 call String.new 1
 push constant 86
@@ -2893,9 +2751,8 @@ push constant 116
 call String.appendChar 2
 push constant 97
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
-push pointer 0
 push constant 61
 call String.new 1
 push constant 85
@@ -3020,7 +2877,7 @@ push constant 116
 call String.appendChar 2
 push constant 101
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
 push local 0
 push constant 0
@@ -3054,8 +2911,6 @@ eq
 if-goto IF_TRUE5
 goto IF_FALSE5
 label IF_TRUE5
-call Screen.clearScreen 0
-pop temp 0
 push pointer 0
 push local 0
 call SumGame.combat 2
@@ -3073,8 +2928,6 @@ eq
 if-goto IF_TRUE6
 goto IF_FALSE6
 label IF_TRUE6
-call Screen.clearScreen 0
-pop temp 0
 push pointer 0
 push local 0
 call SumGame.combat 2
@@ -3093,14 +2946,12 @@ return
 function SumGame.printScore 0
 push argument 0
 pop pointer 0
-push pointer 0
-call SumGame.printSpacer 1
+call Utils.printSpacer 0
 pop temp 0
 push this 0
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push pointer 0
 push constant 18
 call String.new 1
 push constant 86
@@ -3139,11 +2990,10 @@ push constant 71
 call String.appendChar 2
 push constant 79
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
 goto IF_END0
 label IF_FALSE0
-push pointer 0
 push constant 11
 call String.new 1
 push constant 86
@@ -3168,9 +3018,8 @@ push constant 101
 call String.appendChar 2
 push constant 117
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
-push pointer 0
 push constant 18
 call String.new 1
 push constant 86
@@ -3209,11 +3058,10 @@ push constant 71
 call String.appendChar 2
 push constant 79
 call String.appendChar 2
-call SumGame.printPhrase 2
+call Utils.printPhrase 1
 pop temp 0
 label IF_END0
-push pointer 0
-call SumGame.printSpacer 1
+call Utils.printSpacer 0
 pop temp 0
 push constant 0
 return

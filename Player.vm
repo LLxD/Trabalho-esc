@@ -85,6 +85,8 @@ return
 function Player.pergunta 0
 push argument 0
 pop pointer 0
+call Utils.printSpacer 0
+pop temp 0
 push argument 2
 if-goto IF_TRUE0
 goto IF_FALSE0
@@ -180,6 +182,8 @@ pop temp 0
 call Output.println 0
 pop temp 0
 label IF_FALSE2
+call Utils.printSpacer 0
+pop temp 0
 push constant 26
 call String.new 1
 push constant 80

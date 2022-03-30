@@ -21,6 +21,8 @@ class Player {
     }
 
     method int pergunta(boolean direita, boolean esquerda, boolean meio){
+        do Utils.printSpacer();
+
         if(esquerda){
             do Output.printString("ESQUERDA = 0");
             do Output.println();
@@ -33,7 +35,9 @@ class Player {
             do Output.printString("DIREITA = 2");
             do Output.println();
         }
+        do Utils.printSpacer();
         let direcao = Keyboard.readInt("Pra onde voce deseja ir?: ");
+
         if (direcao > 2){
             while (direcao > 2){
                 do Screen.clearScreen();
@@ -42,6 +46,7 @@ class Player {
                 let direcao = Keyboard.readInt("Pra onde voce deseja ir?: ");
              }
         }
+
         do Output.printInt(direcao);
         do Output.println();
         return direcao;

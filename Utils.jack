@@ -1,0 +1,18 @@
+
+class Utils {
+    function void printPhrase(String phrase){
+        do Output.printString(phrase);
+        do Output.println(); 
+        do Sys.wait(5000);
+        do Screen.clearScreen();
+        do Output.moveCursor(0,0);
+        return;
+    }
+
+    function void printSpacer(){
+        do Output.println();
+        do Output.printString("-----------------------------------");
+        do Output.println();
+        return;
+    }
+}
